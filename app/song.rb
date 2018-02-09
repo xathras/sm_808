@@ -24,13 +24,13 @@ class Song
     ((SECONDS_PER_MINUTE / bpm) * 4.0) / PATTERN_STEPS
   end
 
-  def play(device)
-    device.puts "Playing '#{title}' at #{bpm} BPM"
+  def play(device, steps = -1)
     seq = Sequence.new(instruments)
     current_step = 0
     # I don't particularly like infinite loops but the requirements
     # don't seem to have the same hesitance
     loop do
+      break if current_step == steps
       device.print "\n|" if current_step % 8 == 0
       device.print "#{seq.next}|"
       current_step += 1

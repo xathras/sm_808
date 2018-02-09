@@ -14,4 +14,5 @@ song = Song.new('Animal Rights', 128)
            .with_instrument(Instrument.new('Snare', '|_|_|_|_|X|_|_|_|'))
            .with_instrument(Instrument.new('HiHat', '|_|_|X|_|_|_|X|_|'))
 
+STDOUT.puts "Playing '#{song.title}' at #{song.bpm} BPM"
 song.play(STDOUT)

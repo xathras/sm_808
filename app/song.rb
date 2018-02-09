@@ -5,6 +5,9 @@ require 'sequence'
 class Song
   attr_reader :title, :bpm, :instruments
 
+  SECONDS_PER_MINUTE = 60.0
+  PATTERN_STEPS = 8.0
+
   def initialize(title, bpm, instruments = [])
     @title = title
     @bpm = bpm
@@ -17,8 +20,8 @@ class Song
                    instruments.dup.push(new_instrument))
   end
 
-  def step_length
-    ((60.0 / bpm) * 4.0) / 8.0
+  def step_duration
+    ((SECONDS_PER_MINUTE / bpm) * 4.0) / PATTERN_STEPS
   end
 
   def play(device)
@@ -32,7 +35,7 @@ class Song
       device.print "\n|" if current_step % 8 == 0
       device.print "#{seq.next}|"
       current_step += 1
-      sleep step_length
+      sleep step_duration
     end
     device.puts 'Finished playing song.'
   end

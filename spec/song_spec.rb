@@ -20,6 +20,6 @@ RSpec.describe Song do
   it 'should calculate the number of seconds per step' do
     song = Song.new('Test Song', 60)
 
-    expect(song.step_length).to eq(0.5)
+    expect(song.step_duration).to eq(0.5)
   end
 end

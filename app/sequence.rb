@@ -1,3 +1,5 @@
+require 'forwardable'
+
 class Sequence
   extend Forwardable
   def_delegators :@enum, :take, :each, :next, :lazy

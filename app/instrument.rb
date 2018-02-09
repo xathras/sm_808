@@ -1,13 +1,15 @@
+# frozen_string_literal: true
+
 class Instrument
   attr_reader :name
 
   def initialize(name, signature)
     @name = name
     @beats = signature
-            .split('|')
-            .reject { |c| c == '' }
-            .map.with_index { |c, idx| [c, idx + 1] }
-            .reject { |c, idx| c == '_' }.map(&:last)
+             .split('|')
+             .reject(&:empty?)
+             .map.with_index { |c, idx| [c, idx + 1] }
+             .reject { |c, _idx| c == '_' }.map(&:last)
   end
 
   def on?(beat)

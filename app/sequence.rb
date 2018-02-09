@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'forwardable'
 
 class Sequence
@@ -13,7 +15,7 @@ class Sequence
         if active_instruments.empty?
           yielder << '_'
         else
-          yielder <<  active_instruments.map(&:name).join('+')
+          yielder << active_instruments.map(&:name).join('+')
         end
         counter += 1
       end

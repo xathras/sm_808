@@ -37,6 +37,5 @@ class Song
       current_step += 1
       sleep step_duration
     end
-    device.puts 'Finished playing song.'
   end
 end

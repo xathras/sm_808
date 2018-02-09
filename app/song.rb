@@ -25,7 +25,6 @@ class Song
   end
 
   def play(device)
-    # STDOUT.sync = true
     device.puts "Playing '#{title}' at #{bpm} BPM"
     seq = Sequence.new(instruments)
     current_step = 0
